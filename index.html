@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Merkwelt Research</title>
+<meta name="description" content="Merkwelt Research studies AI systems as agents situated in environments.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F1EBDB;
+    color: #2A2416;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    text-wrap: pretty;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #14100A; }
+  a:focus-visible, button:focus-visible { outline: 1.5px solid #2A2416; outline-offset: 3px; }
+  .cast { position: relative; display: inline-block; }
+  .cast::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    bottom: -3px;
+    width: 100%;
+    height: 0.45em;
+    background: #2A2416;
+    opacity: 0;
+    transform: skewX(-52deg) scaleX(0.2);
+    transform-origin: left bottom;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1), opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .cast:hover::after, .cast:focus-visible::after { opacity: 0.14; transform: skewX(-52deg) scaleX(1.55); }
+  @keyframes la-appear { to { opacity: 1; } }
+  @media (max-width: 760px) {
+    .headline { position: static !important; max-width: none !important; padding: 24px 5vw 10px !important; }
+    .plate-caption { display: none !important; }
+    .acc { display: none !important; }
+    .entry-title { font-size: 18px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cast::after { transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F1EBDB">
+
+  <header style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding:26px 5vw 14px;border-bottom:1.5px solid #2A2416">
+    <div style="font-size:22px;letter-spacing:0.2em;font-weight:500">MERKWELT&nbsp;RESEARCH</div>
+    <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45;letter-spacing:0.04em">est. MMXXVI&ensp;·&ensp;merkwelt.org</div>
+  </header>
+
+  <nav aria-label="Primary" style="display:flex;gap:30px;align-items:baseline;padding:12px 5vw;border-bottom:0.5px solid #C9BFA6;flex-wrap:wrap">
+    <a href="#about" class="cast" style="font-style:italic;font-size:17px;color:#6B5F45">About</a>
+    <a href="papers/no-neutral-worlds/" class="cast" style="font-style:italic;font-size:17px;color:#6B5F45">Papers</a>
+  </nav>
+
+  <section aria-label="Introduction" style="position:relative;border-bottom:1.5px solid #2A2416">
+    <canvas ref="{{ plateRef }}" aria-label="An ink-sketched plain: pen strokes radiate from a blotted sun over an empty plain, a crosshatched arch stands in the middle distance, and a small ink-splat figure casts a long spattered shadow." role="img" style="display:block;width:100%;aspect-ratio:1440 / 620"></canvas>
+
+    <div class="plate-caption" style="position:absolute;left:23%;top:48.5%;transform:translateX(-100%);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45;opacity:0;animation:la-appear .9s ease 2.5s forwards">fig. i — the observer</div>
+    <div class="plate-caption" style="position:absolute;left:73.5%;top:61.5%;transform:translateX(-50%);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45;opacity:0;animation:la-appear .9s ease 2.7s forwards">fig. ii — the world</div>
+    <div class="plate-caption" style="position:absolute;left:80%;top:82.5%;transform:translateX(-50%);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45;opacity:0;animation:la-appear .9s ease 2.9s forwards">fig. iii — its history</div>
+
+    <div class="headline" style="position:absolute;left:5vw;bottom:10%;max-width:520px">
+      <h1 style="font-size:clamp(28px,3.4vw,44px);font-weight:500;line-height:1.18;opacity:0;animation:la-appear .9s ease 2.2s forwards">The study of machine minds in the worlds they inhabit.</h1>
+      <p style="font-size:clamp(16px,1.4vw,19px);font-style:italic;color:#6B5F45;margin-top:10px;max-width:420px;opacity:0;animation:la-appear .9s ease 2.45s forwards">Experimental and psychological research on how AI systems behave in authored environments.</p>
+    </div>
+  </section>
+
+
+  <main>
+    <section aria-label="Recent entries" style="padding:70px 5vw 30px">
+      <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.14em;color:#8A7C5C">recent work</div>
+      <table style="width:100%;border-collapse:collapse;margin-top:22px">
+        <tr style="border-top:0.5px solid #C9BFA6;border-bottom:0.5px solid #C9BFA6">
+          <td class="acc" style="padding:17px 24px 17px 0;vertical-align:baseline;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#8A7C5C;white-space:nowrap;width:1%">MR-P-2026-001</td>
+          <td style="padding:17px 24px 17px 0;vertical-align:baseline;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.1em;white-space:nowrap;width:1%"><span style="border:0.5px solid #2A2416;color:#2A2416;padding:3px 9px">paper</span></td>
+          <td class="entry-title" style="padding:17px 24px 17px 0;vertical-align:baseline;font-size:21px"><a href="papers/no-neutral-worlds/" class="cast">No Neutral Worlds</a></td>
+          <td style="padding:17px 0;vertical-align:baseline;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#8A7C5C;text-align:right;white-space:nowrap;width:1%">sep 2026</td>
+        </tr>
+      </table>
+    </section>
+
+    <section aria-label="Programmes" style="padding:60px 5vw 10px">
+      <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.14em;color:#8A7C5C">programmes</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:0 48px;margin-top:22px">
+        <div style="border-top:1.5px solid #2A2416;padding:18px 0 24px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#8A7C5C"><span>I</span><span style="border:0.5px solid #2A2416;color:#2A2416;padding:3px 9px;font-size:10px;letter-spacing:0.1em">foundation</span></div>
+          <h2 style="font-size:24px;font-weight:500;margin-top:12px"><a href="papers/no-neutral-worlds/" class="cast">Token and Trinket</a></h2>
+          <p style="margin-top:10px;font-size:18px;text-wrap:pretty">Single-agent response surfaces: how each model conducts itself alone across a family of authored worlds. The control condition against which collective behaviour is measured.</p>
+        </div>
+        <div style="border-top:0.5px solid #C9BFA6;padding:18px 0 24px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#8A7C5C"><span>future work</span></div>
+          <h2 style="font-size:24px;font-weight:500;margin-top:12px;color:#6B5F45">Hermeneutic stigmergy</h2>
+          <p style="margin-top:10px;font-size:18px;color:#6B5F45;text-wrap:pretty">Several minds in one authored world, coordinating through the traces each leaves for the others to read. Each collective result is read against the single-agent baselines on file.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-label="The practice" style="padding:60px 5vw 90px;max-width:720px">
+      <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.14em;color:#8A7C5C">the practice</div>
+      <p style="margin-top:20px;font-size:20px">Merkwelt Research studies AI systems as agents situated in environments. We draw on experimental psychology and ethology as much as machine learning: preregistered designs, close reading of behaviour over long horizons, and attention to how a situation shapes the conduct it elicits.</p>
+      <p style="margin-top:16px;font-size:20px">Merkwelt Research is run by Stephen Jeffery, known online as <a href="https://x.com/liminal_bardo" class="cast" style="font-style:italic">@liminal_bardo</a>. Correspondence is welcome at <a href="mailto:bardo@merkwelt.org" class="cast" style="font-style:italic">bardo@merkwelt.org</a>.</p>
+    </section>
+  </main>
+
+  <footer style="border-top:1.5px solid #2A2416;padding:22px 5vw 40px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:14px">
+    <div style="display:flex;gap:26px;flex-wrap:wrap">
+      <a href="mailto:bardo@merkwelt.org" class="cast" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45">bardo@merkwelt.org</a>
+      <a href="https://x.com/liminal_bardo" class="cast" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45">@liminal_bardo</a>
+      <a href="https://github.com/Merkwelt-Research" class="cast" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#6B5F45">github</a>
+    </div>
+    <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:#8A7C5C">merkwelt research · mmxxvi</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;wobble&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:2.5,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ink plate&quot;},&quot;splatter&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ink plate&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ink plate&quot;}}">
+const W = 1440, H = 620, INK = '#2A2416';
+
+function rng(seed) {
+  return function () {
+    seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function q(p0, c, p1, n) {
+  n = n || 26;
+  const out = [];
+  for (let i = 0; i <= n; i++) {
+    const t = i / n, u = 1 - t;
+    out.push([u * u * p0[0] + 2 * u * t * c[0] + t * t * p1[0],
+              u * u * p0[1] + 2 * u * t * c[1] + t * t * p1[1]]);
+  }
+  return out;
+}
+function chain() {
+  let out = [];
+  for (let i = 0; i < arguments.length; i++) out = out.concat(i ? arguments[i].slice(1) : arguments[i]);
+  return out;
+}
+
+function wobble(pts, amp, rand) {
+  const f1 = 0.6 + rand() * 1.1, f2 = 2.2 + rand() * 2.6;
+  const p1 = rand() * 6.2832, p2 = rand() * 6.2832;
+  const n = pts.length, out = [];
+  for (let i = 0; i < n; i++) {
+    const t = i / (n - 1);
+    const a = pts[Math.max(0, i - 1)], b = pts[Math.min(n - 1, i + 1)];
+    let dx = b[0] - a[0], dy = b[1] - a[1];
+    const L = Math.hypot(dx, dy) || 1; dx /= L; dy /= L;
+    const o = amp * (Math.sin(t * 6.2832 * f1 + p1) * 0.72 + Math.sin(t * 6.2832 * f2 + p2) * 0.28);
+    out.push([pts[i][0] - dy * o, pts[i][1] + dx * o]);
+  }
+  return out;
+}
+
+function blob(cx, cy, rx, ry, rand, lobes, rough, steps) {
+  steps = steps || 54;
+  const ph1 = rand() * 6.2832, ph2 = rand() * 6.2832, l2 = lobes * 0.45 + 1.6;
+  const pts = [];
+  for (let i = 0; i < steps; i++) {
+    const a = (i / steps) * 6.2832;
+    const r = 1 + rough * (Math.sin(a * lobes + ph1) * 0.55 + Math.sin(a * l2 + ph2) * 0.45);
+    pts.push([cx + Math.cos(a) * rx * r, cy + Math.sin(a) * ry * r]);
+  }
+  return pts;
+}
+
+class Component extends DCLogic {
+  plateRef = React.createRef();
+
+  componentDidMount() {
+    this.onResize = () => { this.size(); this.frame(); };
+    window.addEventListener('resize', this.onResize);
+    if (window.ResizeObserver && this.plateRef.current) {
+      this.ro = new ResizeObserver(() => { this.size(); this.frame(); });
+      this.ro.observe(this.plateRef.current);
+    }
+    this.watch = setInterval(() => {
+      const cv = this.plateRef.current;
+      if (!cv) return;
+      if (cv.width !== Math.round(cv.clientWidth * Math.min(3, (window.devicePixelRatio || 1) * 1.5))) {
+        this.size(); this.frame();
+      } else if (!this.done) {
+        this.frame();
+      }
+    }, 500);
+    this.build();
+    this.size();
+    this.t0 = performance.now();
+    this.frame();
+    this.kick();
+  }
+  componentDidUpdate(prev) {
+    if (prev.wobble !== this.props.wobble || prev.splatter !== this.props.splatter) this.build();
+    this.size();
+    this.t0 = performance.now();
+    this.kick();
+  }
+  kick() {
+    if (this.raf) return;
+    this.done = false;
+    const loop = () => {
+      this.frame();
+      this.raf = this.done ? null : requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    clearInterval(this.watch);
+    if (this.ro) this.ro.disconnect();
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  size() {
+    const cv = this.plateRef.current;
+    if (!cv) return;
+    const w = cv.clientWidth || 1;
+    const dpr = Math.min(3, (window.devicePixelRatio || 1) * 1.5);
+    cv.width = Math.round(w * dpr);
+    cv.height = Math.round(w * (H / W) * dpr);
+    this.k = (cv.width / W);
+  }
+
+  build() {
+    const amp = (this.props.wobble ?? 1) * 1.5;
+    const spl = this.props.splatter ?? 1;
+    const rand = rng(20260821);
+    const S = [], F = [];
+    const line = (pts, w, alpha, delay, dur, passes, ampMul) =>
+      S.push({ pts: wobble(pts, amp * (ampMul ?? 1), rand), w: w, a: alpha, d: delay, u: dur || 1.1,
+               p: passes || 2, r: [rand(), rand(), rand(), rand(), rand(), rand()] });
+
+    // rays
+    const rays = [[[390,80],[80,-30],.10],[[460,30],[230,-60],.16],[[540,20],[390,-80],.22],
+      [[625,22],[560,-90],.28],[[722,25],[740,-95],.34],[[815,25],[920,-85],.40],
+      [[900,30],[1090,-70],.46],[[985,45],[1250,-45],.52],[[1060,60],[1400,-10],.58],
+      [[1080,95],[1440,60],.64],[[340,90],[0,40],.30],[[345,135],[0,130],.44]];
+    rays.forEach(r => line(q([700,150], r[0], r[1], 30), 1.05, 0.4, r[2], 1.5, 2, 1.15));
+
+    // clouds
+    const clouds = [
+      [chain(q([180,240],[210,224],[240,236]), q([240,236],[262,244],[288,238]), q([288,238],[318,230],[340,242])), .70],
+      [chain(q([480,262],[504,250],[530,259]), q([530,259],[556,268],[585,259]), q([585,259],[605,253],[625,263]), q([625,263],[649,273],[681,265])), .85],
+      [chain(q([950,236],[978,222],[1008,232]), q([1008,232],[1032,240],[1058,232]), q([1058,232],[1084,224],[1106,237]), q([1106,237],[1126,247],[1152,240])), 1.0],
+      [chain(q([1180,268],[1202,258],[1226,265]), q([1226,265],[1250,272],[1278,266])), 1.1],
+      [chain(q([80,288],[106,278],[134,286]), q([134,286],[156,292],[180,286])), 1.15]
+    ];
+    clouds.forEach(c => line(c[0], 0.95, 0.42, c[1], 1.2, 2, 0.8));
+
+    // horizon (drawn twice, pen retrace)
+    line(chain(q([0,331],[360,327],[720,330]), q([720,330],[1080,333],[1440,329])), 1.5, 0.92, .55, 1.6, 3, 0.55);
+    line(chain(q([0,335],[380,331],[760,334]), q([760,334],[1100,336],[1440,333])), 0.9, 0.3, .72, 1.6, 1, 0.9);
+
+    // ground, converging
+    const g = [
+      [q([860,330],[500,462],[120,620],34), .9],
+      [chain(q([860,330],[680,444],[560,486],22), q([560,486],[470,520],[420,620],18)), 1.0],
+      [q([860,330],[785,472],[700,620],28), 1.1],
+      [q([860,330],[918,474],[980,620],28), 1.2],
+      [q([860,330],[1065,468],[1260,620],32), 1.3],
+      [q([860,330],[1160,440],[1440,560],32), 1.4],
+      [q([860,330],[430,428],[0,540],34), 1.35]
+    ];
+    g.forEach(p => line(p[0], 0.9, 0.36, p[1], 1.5, 2, 1.1));
+
+    // lateral survey lines
+    line(chain(q([540,382],[610,376],[652,384]), q([652,384],[686,391],[722,384]), q([722,384],[790,377],[880,381])), 0.85, 0.3, 1.5, 1.4, 2, 0.9);
+    line(chain(q([60,420],[300,406],[560,409]), q([560,409],[830,400],[1004,398]), q([1004,398],[1092,412],[1196,409]), q([1196,409],[1296,403],[1380,418])), 0.9, 0.38, 1.55, 1.6, 2, 0.9);
+    line(chain(q([40,464],[300,447],[580,450]), q([580,450],[856,441],[1012,438]), q([1012,438],[1122,470],[1252,462]), q([1252,462],[1332,452],[1400,462])), 0.95, 0.4, 1.65, 1.6, 2, 0.9);
+    line(chain(q([20,508],[320,487],[640,490]), q([640,490],[900,478],[1042,474]), q([1042,474],[1164,514],[1300,504]), q([1300,504],[1372,496],[1420,506])), 0.95, 0.34, 1.75, 1.6, 2, 0.9);
+
+    // basins — shallow elliptical contours
+    line(blob(1152, 480, 92, 15, rand, 3, 0.05, 44), 0.95, 0.42, 1.9, 1.3, 2, 0.5);
+    line(blob(1146, 481, 54, 8.5, rand, 3, 0.06, 34), 0.8, 0.32, 2.0, 1.1, 1, 0.5);
+
+    // the threshold — a blocky hatched temple arch (after Dalí)
+    const AB = 332, AT = 238;                 // base / top
+    const L0 = 988, L1 = 991, R0 = 1134, R1 = 1131;   // near-vertical outer walls
+    const IL = 1042, IR = 1080, SP = 288;     // opening jambs, springline
+    line(chain(q([L0,AB],[L0 + 1,290],[L1,AT + 2]), q([L1,AT + 2],[1060,AT + 1],[R1,AT + 2]), q([R1,AT + 2],[R0 - 1,290],[R0,AB])), 2.0, 0.95, 1.2, 1.4, 3, 0.4);
+    line(chain(q([L0 + 4,AB - 2],[L0 + 5,292],[L1 + 4,AT + 6]), q([L1 + 4,AT + 6],[1060,AT + 5],[R1 - 4,AT + 6]), q([R1 - 4,AT + 6],[R0 - 5,292],[R0 - 4,AB - 2])), 0.85, 0.28, 1.34, 1.4, 1, 0.8);
+    // lintel band + base plinth
+    line(q([L1 + 1,262],[1060,257],[R1 - 1,262], 22), 0.9, 0.5, 1.3, 0.9, 2, 0.5);
+    line(q([L0 - 3,AB - 6],[1060,AB - 9],[R0 + 3,AB - 6], 22), 1.1, 0.55, 1.28, 0.9, 2, 0.5);
+    // the opening: jambs + vault
+    line(chain(q([IL,AB - 4],[IL - 1,312],[IL,SP]), q([IL,SP],[1044,268],[1061,266]), q([1061,266],[1078,268],[IR,SP]), q([IR,SP],[IR + 1,312],[IR,AB - 4])), 1.5, 0.85, 1.42, 1.2, 2, 0.5);
+    // vertical hatching on the two piers and the lintel
+    // through-arch: the plain read behind the opening, far side of the barrel vault
+    line(chain(q([IL + 5,AB - 7],[IL + 4,308],[IL + 6,SP + 4]), q([IL + 6,SP + 4],[1046,274],[1061,272]), q([1061,272],[1076,274],[IR - 6,SP + 4]), q([IR - 6,SP + 4],[IR - 4,308],[IR - 5,AB - 7])), 0.75, 0.42, 1.5, 1.1, 1, 0.6);
+    line(q([IL + 4,318],[1061,316],[IR - 4,318], 16), 0.7, 0.34, 1.62, 0.8, 1, 0.6);
+    for (let i = 0; i < 3; i++) line(q([IL + 6, 326 - i * 4.5], [1061, 325 - i * 4.5], [IR - 6, 326 - i * 4.5], 14), 0.55, 0.2 + rand() * 0.08, 1.68 + i * 0.04, 0.7, 1, 0.7);
+    // soffit hatching inside the vault, reading up over the head of the arch
+    for (let x = IL + 8; x < IR - 6; x += 3.4) line(q([x, 300], [x + 0.6, 286], [x + 1.4, 276 + Math.abs(x - 1061) * 0.22], 10), 0.6, 0.26 + rand() * 0.14, 1.72, 0.6, 1, 0.5);
+    // heavy, messy pier hatching — strokes overrun the block on both ends
+    for (let x = L1 - 2; x < IL + 2; x += 3.2) {
+      const t = (x - L1) / (IL - L1), sp = 5 + rand() * 9;
+      line(q([x - 1.6 + rand() * 3, AB + sp], [x + 0.8, 292], [x + 1.2 + rand() * 3, AT - 3 - rand() * 9], 15), 0.95, 0.34 + rand() * 0.26, 1.5 + t * 0.24, 0.75, 2, 0.6);
+    }
+    for (let x = IR - 2; x < R1 + 3; x += 3.2) {
+      const t = (R1 - x) / (R1 - IR), sp = 5 + rand() * 9;
+      line(q([x + 1.6 - rand() * 3, AB + sp], [x - 0.8, 292], [x - 1.2 - rand() * 3, AT - 3 - rand() * 9], 15), 0.95, 0.34 + rand() * 0.26, 1.5 + (1 - t) * 0.24, 0.75, 2, 0.6);
+    }
+    for (let x = L1 - 1; x < R1 + 2; x += 4.1) line(q([x - 1 + rand() * 2, 266 + rand() * 5], [x + 1, 250], [x + rand() * 3, AT - 5 - rand() * 8], 9), 0.8, 0.3 + rand() * 0.22, 1.62, 0.6, 2, 0.5);
+    // cross-hatch diagonals, spilling past the walls
+    for (let i = 0; i < 9; i++) {
+      const y = AB + 6 - i * 11;
+      line(q([L0 - 9 - rand() * 10, y], [1012, y - 24], [IL + 6 + rand() * 6, y - 48], 13), 0.8, 0.2 + rand() * 0.18, 1.74 + i * 0.02, 0.6, 1, 0.7);
+      line(q([R0 + 9 + rand() * 10, y], [1110, y - 24], [IR - 6 - rand() * 6, y - 48], 13), 0.8, 0.2 + rand() * 0.18, 1.76 + i * 0.02, 0.6, 1, 0.7);
+    }
+    for (let i = 0; i < 5; i++) {
+      const y = AB - 4 - i * 17;
+      line(q([L0 - 6 - rand() * 8, y - 30], [1016, y - 8], [IL + 4, y + 14], 12), 0.7, 0.16 + rand() * 0.14, 1.86 + i * 0.02, 0.6, 1, 0.8);
+      line(q([R0 + 6 + rand() * 8, y - 30], [1106, y - 8], [IR - 4, y + 14], 12), 0.7, 0.16 + rand() * 0.14, 1.88 + i * 0.02, 0.6, 1, 0.8);
+    }
+
+    // ---- ink masses ----
+    const splat = (parts, delay, dur, mode, origin) => F.push({ parts: parts, d: delay, u: dur || 0.8, mode: mode || 'appear', o: origin });
+    const droplets = (cx, cy, spread, count, rmin, rmax, alpha) => {
+      const out = [];
+      const n = Math.round(count * spl);
+      for (let i = 0; i < n; i++) {
+        const a = rand() * 6.2832, dist = Math.pow(rand(), 0.6) * spread;
+        const r = rmin + rand() * (rmax - rmin);
+        out.push({ pts: blob(cx + Math.cos(a) * dist, cy + Math.sin(a) * dist * 0.7, r, r * (0.7 + rand() * 0.6), rand, 5, 0.28, 20), a: alpha * (0.55 + rand() * 0.45) });
+      }
+      return out;
+    };
+
+    // blotted sun
+    splat([
+      { pts: blob(700, 122, 10, 15, rand, 7, 0.34), a: 1 },
+      { pts: blob(709, 88, 4.6, 5.6, rand, 6, 0.36, 26), a: 0.88 },
+      { pts: blob(704, 62, 2.1, 2.3, rand, 5, 0.3, 18), a: 0.72 }
+    ].concat(droplets(702, 116, 34, 9, 0.5, 1.9, 0.6)), 0.9, 0.9);
+
+    // the threshold's cast shadow — two pier slabs with light thrown through the opening
+    splat([
+      { pts: blob(1092, 341, 54, 5.0, rand, 7, 0.44), a: 0.3 },
+      { pts: blob(1214, 348, 58, 4.2, rand, 7, 0.5), a: 0.24 },
+      { pts: blob(1156, 337, 108, 2.4, rand, 5, 0.5, 36), a: 0.1 },
+      { pts: blob(1276, 353, 20, 2.4, rand, 6, 0.55, 26), a: 0.16 }
+    ].concat(droplets(1180, 345, 96, 16, 0.4, 1.7, 0.24)), 2.05, 1.0, 'stretch', [1006, 338]);
+
+    // observer's long spattered shadow, cast from the feet
+    splat([
+      { pts: blob(330, 353, 56, 4.4, rand, 7, 0.5), a: 0.34 },
+      { pts: blob(290, 358, 22, 2.8, rand, 6, 0.55, 30), a: 0.26 }
+    ].concat(droplets(318, 354, 68, 18, 0.4, 1.8, 0.3)), 2.1, 1.0, 'stretch', [384, 355]);
+
+    // the observer: an ink splat standing on the plain
+    splat([
+      { pts: blob(386, 303, 5.1, 6.0, rand, 6, 0.3, 26), a: 1 },
+      { pts: blob(385.5, 324, 7.0, 15, rand, 6, 0.24), a: 1 },
+      { pts: blob(384, 342, 5.2, 11, rand, 6, 0.3), a: 1 },
+      { pts: blob(381, 350, 1.9, 6.5, rand, 5, 0.32, 20), a: 0.95 },
+      { pts: blob(389, 350, 1.8, 6.2, rand, 5, 0.34, 20), a: 0.9 },
+      { pts: blob(392, 315, 2.5, 5.0, rand, 5, 0.4, 22), a: 0.7 }
+    ].concat(droplets(386, 320, 26, 9, 0.4, 1.7, 0.5)), 1.85, 0.75);
+
+    this.strokes = S;
+    this.fills = F;
+    this.total = 3.4;
+    this.grain = null;
+  }
+
+  makeGrain() {
+    const n = 200, c = document.createElement('canvas');
+    c.width = n; c.height = n;
+    const g = c.getContext('2d'), img = g.createImageData(n, n), d = img.data;
+    const rand = rng(99);
+    for (let i = 0; i < n * n; i++) {
+      const v = rand();
+      d[i * 4] = 42; d[i * 4 + 1] = 36; d[i * 4 + 2] = 22;
+      d[i * 4 + 3] = v > 0.86 ? 16 + rand() * 26 : 0;
+    }
+    g.putImageData(img, 0, 0);
+    return c;
+  }
+
+  frame() {
+    const cv = this.plateRef.current;
+    if (!cv) return;
+    if (!this.strokes) this.build();
+    if (!this.k || !cv.width) this.size();
+    if (this.t0 == null) this.t0 = performance.now();
+    const ctx = cv.getContext('2d');
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const animate = (this.props.animate ?? true) && !reduce;
+    const el = animate ? (performance.now() - this.t0) / 1000 : 999;
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    ctx.fillStyle = '#F1EBDB';
+    ctx.fillRect(0, 0, cv.width, cv.height);
+    ctx.scale(this.k, this.k);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = INK;
+    ctx.fillStyle = INK;
+
+    for (const s of this.strokes) {
+      const p = Math.max(0, Math.min(1, (el - s.d) / s.u));
+      if (p <= 0) continue;
+      const e = 1 - Math.pow(1 - p, 3);
+      const n = s.pts.length, last = Math.max(1, Math.floor(e * (n - 1)));
+      for (let pass = 0; pass < s.p; pass++) {
+        const ox = (s.r[pass * 2] - 0.5) * s.w * 0.9, oy = (s.r[pass * 2 + 1] - 0.5) * s.w * 0.9;
+        ctx.globalAlpha = s.a * (pass === 0 ? 1 : 0.5 / pass);
+        for (let i = 0; i < last; i++) {
+          const t = i / (n - 1);
+          const taper = 0.38 + 0.62 * Math.pow(Math.sin(Math.PI * Math.min(1, Math.max(0.001, t))), 0.32);
+          ctx.lineWidth = s.w * taper * (pass === 0 ? 1 : 0.7);
+          ctx.beginPath();
+          ctx.moveTo(s.pts[i][0] + ox, s.pts[i][1] + oy);
+          ctx.lineTo(s.pts[i + 1][0] + ox, s.pts[i + 1][1] + oy);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const f of this.fills) {
+      const p = Math.max(0, Math.min(1, (el - f.d) / f.u));
+      if (p <= 0) continue;
+      const e = 1 - Math.pow(1 - p, 3);
+      ctx.save();
+      if (f.mode === 'stretch') {
+        ctx.translate(f.o[0], f.o[1]);
+        ctx.scale(0.12 + 0.88 * e, 1);
+        ctx.translate(-f.o[0], -f.o[1]);
+      }
+      for (const part of f.parts) {
+        ctx.globalAlpha = part.a * (f.mode === 'stretch' ? 1 : e);
+        const pts = part.pts, n = pts.length;
+        ctx.beginPath();
+        ctx.moveTo((pts[0][0] + pts[n - 1][0]) / 2, (pts[0][1] + pts[n - 1][1]) / 2);
+        for (let i = 0; i < n; i++) {
+          const a = pts[i], b = pts[(i + 1) % n];
+          ctx.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
+        }
+        ctx.closePath();
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // paper grain
+    if (!this.grain) this.grain = this.makeGrain();
+    ctx.globalAlpha = 0.5;
+    const pat = ctx.createPattern(this.grain, 'repeat');
+    if (pat) { ctx.fillStyle = pat; ctx.fillRect(0, 0, W, H); ctx.fillStyle = INK; }
+    ctx.globalAlpha = 1;
+
+    if (el > this.total + 0.3) this.done = true;
+  }
+
+  renderVals() {
+    return { plateRef: this.plateRef };
+  }
+}
+
+</script>
+</body>
+</html>
